@@ -1,5 +1,6 @@
 @os-light-blue-color: #AED7E5;
 @os-med-blue-color: #468499;
+@os-light-gray-color: #F2F2F2;
 
 .os {
     &-bkgd {
@@ -9,6 +10,10 @@
       
       &-med-blue {
           background-color: @os-med-blue-color;
+      }
+
+      &-light-gray {
+          background-color: @os-light-gray-color;
       }
     }
 
@@ -24,5 +29,10 @@
         }
     }
 
+    &-pd {
+        &-deep {
+            padding: 25px;
+        }
+    }
 }
 
