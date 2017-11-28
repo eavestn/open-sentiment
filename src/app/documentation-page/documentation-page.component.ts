@@ -1,29 +1,20 @@
-import { Component, ComponentFactoryResolver, ViewChild, AfterViewInit } from '@angular/core';
+import { Component, Input, OnInit, Type } from '@angular/core';
+import { HttpClient } 	from '@angular/common/http';
+import { markdown } from 'markdown';
 import { DocumentationContainerComponent } from './components/documentation-container.component';
-import { DocumentationMarkdownDirective } from './directives/documentation-markdown.directive';
-
 
 @Component({
 	selector: 'documentation-page',
 	template: `
-		<div> Puppies
-			<ng-template documentation-markdown></ng-template>
+		<div>
+			<dynamic-content-wrapper [type]="documentationContainerType"></dynamic-content-wrapper>
 		</div>
 	`
 })
-export class DocumentationPageComponent implements AfterViewInit {
-	@ViewChild(DocumentationMarkdownDirective) documentationMarkdownDirective : DocumentationMarkdownDirective;
-	
-	constructor(private componentFactoryResolver: ComponentFactoryResolver ) {}
+export class DocumentationPageComponent implements OnInit {
+	public documentationContainerType: any;
 
-	private loadComponent() {
-		let componentFactory = this.componentFactoryResolver.resolveComponentFactory(DocumentationContainerComponent);
-		let viewContainerRef = this.documentationMarkdownDirective.viewContainerRef;
-		viewContainerRef.clear();
-		viewContainerRef.createComponent(componentFactory);
-	}
-
-	public ngAfterViewInit() {
-		this.loadComponent();
+	public ngOnInit() {
+		this.documentationContainerType = DocumentationContainerComponent;
 	}
 }
