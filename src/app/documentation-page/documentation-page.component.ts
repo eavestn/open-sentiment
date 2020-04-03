@@ -1,5 +1,5 @@
 import { Component, Input, OnInit, Type } from '@angular/core';
-import { HttpClient } 	from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { markdown } from 'markdown';
 import { DocumentationContainerComponent } from './components/documentation-container.component';
 
